@@ -18,7 +18,7 @@ public class AppController {
     public Button btnCorrer;
 
     private CocheTask coche1, coche2, coche3;
-    private final int distanciaCircuito = 50000;
+    private final int distanciaCircuito = 50;
 
     @FXML
     public void iniciarCarrera(Event event){
@@ -27,9 +27,6 @@ public class AppController {
         int tfCoche3Value = Integer.parseInt(tfCoche3.getText());
 
         coche1 = new CocheTask(tfCoche1Value, distanciaCircuito, "Seat");
-        coche2 = new CocheTask(tfCoche2Value, distanciaCircuito, "Ford");
-        coche3 = new CocheTask(tfCoche3Value, distanciaCircuito, "Ferrari");
-
         // Coche1
         coche1.stateProperty().addListener((observableValue, oldState, newState) -> {
             if (newState == Worker.State.RUNNING){
@@ -43,7 +40,9 @@ public class AppController {
             lblCoche1.setText(newState);
         });
         new Thread(coche1).start();
+
         // Coche2
+        coche2 = new CocheTask(tfCoche2Value, distanciaCircuito, "Ford");
         coche2.stateProperty().addListener((observableValue, oldState, newState) -> {
             if (newState == Worker.State.RUNNING){
                 pbCoche2.progressProperty().unbind();
@@ -56,7 +55,9 @@ public class AppController {
             lblCoche2.setText(newState);
         });
         new Thread(coche2).start();
+
         // Coche3
+        coche3 = new CocheTask(tfCoche3Value, distanciaCircuito, "Ferrari");
         coche3.stateProperty().addListener((observableValue, oldState, newState) -> {
             if (newState == Worker.State.RUNNING){
                 pbCoche3.progressProperty().unbind();

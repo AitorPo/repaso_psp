@@ -72,18 +72,22 @@ public class CocheTask extends Task<Integer> {
     @Override
     protected Integer call() throws Exception {
         while (distanciaRecorrida < distanciaCircuito){
+            double progreso = (double)distanciaRecorrida / distanciaCircuito;
+
             Thread.sleep(1000);
             distanciaRecorrida += velocidad;
 
-            updateProgress(0, (double)distanciaRecorrida);
+            //updateProgress(progreso,1);
 
             if (distanciaRecorrida > distanciaCircuito){
                 distanciaRecorrida = distanciaCircuito;
             }
+            updateProgress(progreso,1);
 
-            updateProgress(distanciaRecorrida,1);
-            updateMessage("Carrera finalizada");
         }
+        updateProgress(1,1);
+        updateMessage("Carrera finalizada");
+
 
         return null;
     }
