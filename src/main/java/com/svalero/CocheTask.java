@@ -12,14 +12,15 @@ import java.util.ResourceBundle;
 
 public class CocheTask extends Task<Integer> {
 
-
-
     private int velocidad;
     private int distanciaCircuito;
     private int distanciaRecorrida;
     private String nombre;
     private ProgressBar pbCoche;
     private Label lblCoche;
+
+
+
 
     public CocheTask(int velocidad, int distanciaCircuito, int distanciaRecorrida,
                      Label lblCoche, ProgressBar pbCoche){
@@ -28,6 +29,10 @@ public class CocheTask extends Task<Integer> {
         this.distanciaRecorrida = 0;
         this.lblCoche = lblCoche;
         this.pbCoche = pbCoche;
+
+
+
+
     }
 
     public CocheTask(int velocidad, int distanciaCircuito, String nombre){
@@ -81,6 +86,7 @@ public class CocheTask extends Task<Integer> {
 
             if (distanciaRecorrida > distanciaCircuito){
                 distanciaRecorrida = distanciaCircuito;
+
             }
             updateProgress(progreso,1);
 
@@ -91,6 +97,4 @@ public class CocheTask extends Task<Integer> {
 
         return null;
     }
-
-
 }

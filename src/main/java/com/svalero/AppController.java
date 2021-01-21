@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
+
 public class AppController {
 
 
@@ -26,6 +28,7 @@ public class AppController {
         int tfCoche2Value = Integer.parseInt(tfCoche2.getText());
         int tfCoche3Value = Integer.parseInt(tfCoche3.getText());
 
+
         coche1 = new CocheTask(tfCoche1Value, distanciaCircuito, "Seat");
         // Coche1
         coche1.stateProperty().addListener((observableValue, oldState, newState) -> {
@@ -34,12 +37,13 @@ public class AppController {
                 pbCoche1.progressProperty().bind(coche1.progressProperty());
             } else if (newState == Worker.State.SUCCEEDED){
                 lblGanador.setText("Ha ganado " + coche1.getNombre());
+                coche2.cancel();
+                coche3.cancel();
             }
         });
         coche1.messageProperty().addListener((observableValue, oldState, newState) -> {
             lblCoche1.setText(newState);
         });
-        new Thread(coche1).start();
 
         // Coche2
         coche2 = new CocheTask(tfCoche2Value, distanciaCircuito, "Ford");
@@ -49,12 +53,13 @@ public class AppController {
                 pbCoche2.progressProperty().bind(coche2.progressProperty());
             } else if (newState == Worker.State.SUCCEEDED){
                 lblGanador.setText("Ha ganado " + coche2.getNombre());
+                coche1.cancel();
+                coche3.cancel();
             }
         });
         coche2.messageProperty().addListener((observableValue, oldState, newState) -> {
             lblCoche2.setText(newState);
         });
-        new Thread(coche2).start();
 
         // Coche3
         coche3 = new CocheTask(tfCoche3Value, distanciaCircuito, "Ferrari");
@@ -64,14 +69,16 @@ public class AppController {
                 pbCoche3.progressProperty().bind(coche3.progressProperty());
             } else if (newState == Worker.State.SUCCEEDED){
                 lblGanador.setText("Ha ganado " + coche3.getNombre());
+                coche1.cancel();
+                coche2.cancel();
             }
         });
         coche3.messageProperty().addListener((observableValue, oldState, newState) -> {
             lblCoche3.setText(newState);
         });
+
+        new Thread(coche1).start();
+        new Thread(coche2).start();
         new Thread(coche3).start();
-
-
-
     }
 }
