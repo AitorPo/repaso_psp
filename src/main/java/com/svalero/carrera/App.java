@@ -1,4 +1,4 @@
-package com.svalero;
+package com.svalero.carrera;
 
 import com.svalero.utils.R;
 import javafx.application.Application;

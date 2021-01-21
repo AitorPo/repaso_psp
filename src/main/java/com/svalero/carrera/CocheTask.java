@@ -1,4 +1,4 @@
-package com.svalero;
+package com.svalero.carrera;
 
 import javafx.concurrent.Task;
 import javafx.fxml.Initializable;
@@ -77,7 +77,7 @@ public class CocheTask extends Task<Integer> {
     @Override
     protected Integer call() throws Exception {
         while (distanciaRecorrida < distanciaCircuito){
-            double progreso = (double)distanciaRecorrida / distanciaCircuito;
+            double progreso = (double)distanciaRecorrida / (double)distanciaCircuito;
 
             Thread.sleep(1000);
             distanciaRecorrida += velocidad;

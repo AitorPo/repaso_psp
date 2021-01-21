@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="405.0" prefWidth="600.0">
          <children>
             <ProgressBar fx:id="pbCoche1" layoutX="14.0" layoutY="54.0" prefWidth="200.0" progress="0.0" />
             <ProgressBar fx:id="pbCoche2" layoutX="14.0" layoutY="114.0" prefWidth="200.0" progress="0.0" />
             <ProgressBar fx:id="pbCoche3" layoutX="14.0" layoutY="176.0" prefWidth="200.0" progress="0.0" />
-            <Label layoutX="14.0" layoutY="37.0" text="Coche 1" />
-            <Label layoutX="14.0" layoutY="159.0" text="Coche 3" />
-            <Label layoutX="14.0" layoutY="97.0" text="Coche 2" />
+            <Label fx:id="lblNombre1" layoutX="14.0" layoutY="37.0" />
+            <Label fx:id="lblNombre2" layoutX="14.0" layoutY="159.0" />
+            <Label fx:id="lblNombre3" layoutX="14.0" layoutY="97.0" />
             <Label fx:id="lblCoche1" layoutX="258.0" layoutY="54.0" prefHeight="17.0" prefWidth="134.0" />
             <Label fx:id="lblCoche3" layoutX="258.0" layoutY="177.0" prefHeight="17.0" prefWidth="134.0" />
             <Label fx:id="lblCoche2" layoutX="258.0" layoutY="115.0" prefHeight="17.0" prefWidth="134.0" />
@@ -26,6 +21,7 @@
             <TextField fx:id="tfCoche1" layoutX="65.0" layoutY="25.0" prefHeight="25.0" prefWidth="69.0" />
             <TextField fx:id="tfCoche3" layoutX="65.0" layoutY="147.0" prefHeight="25.0" prefWidth="69.0" />
             <TextField fx:id="tfCoche2" layoutX="65.0" layoutY="85.0" prefHeight="25.0" prefWidth="69.0" />
+            <Label fx:id="lblDistancia" layoutX="442.0" layoutY="29.0" prefHeight="17.0" prefWidth="134.0" />
          </children>
       </AnchorPane>
    </children>

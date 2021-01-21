@@ -1,5 +1,4 @@
-com\svalero\App.class
-com\svalero\CocheTaskController.class
-com\svalero\CocheTask.class
-com\svalero\AppController.class
+com\svalero\carrera\CocheTask.class
+com\svalero\carrera\AppController.class
+com\svalero\carrera\App.class
 com\svalero\utils\R.class

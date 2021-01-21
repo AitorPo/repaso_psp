@@ -1,26 +1,29 @@
-package com.svalero;
+package com.svalero.carrera;
 
 import javafx.concurrent.Worker;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 
-import java.util.ArrayList;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AppController {
+public class AppController implements Initializable {
 
 
     public ProgressBar pbCoche1, pbCoche2, pbCoche3;
-    public Label lblCoche1, lblCoche2, lblCoche3, lblGanador;
+    public Label lblCoche1, lblCoche2, lblCoche3, lblNombre1, lblNombre2, lblNombre3, lblDistancia, lblGanador;
     public TextField tfCoche1, tfCoche2, tfCoche3;
     public Button btnCorrer;
 
     private CocheTask coche1, coche2, coche3;
     private final int distanciaCircuito = 50;
+
+
 
     @FXML
     public void iniciarCarrera(Event event){
@@ -28,9 +31,9 @@ public class AppController {
         int tfCoche2Value = Integer.parseInt(tfCoche2.getText());
         int tfCoche3Value = Integer.parseInt(tfCoche3.getText());
 
-
-        coche1 = new CocheTask(tfCoche1Value, distanciaCircuito, "Seat");
         // Coche1
+        coche1 = new CocheTask(tfCoche1Value, distanciaCircuito, "Seat");
+        lblNombre1.setText(coche1.getNombre());
         coche1.stateProperty().addListener((observableValue, oldState, newState) -> {
             if (newState == Worker.State.RUNNING){
                 pbCoche1.progressProperty().unbind();
@@ -47,6 +50,7 @@ public class AppController {
 
         // Coche2
         coche2 = new CocheTask(tfCoche2Value, distanciaCircuito, "Ford");
+        lblNombre2.setText(coche2.getNombre());
         coche2.stateProperty().addListener((observableValue, oldState, newState) -> {
             if (newState == Worker.State.RUNNING){
                 pbCoche2.progressProperty().unbind();
@@ -55,6 +59,8 @@ public class AppController {
                 lblGanador.setText("Ha ganado " + coche2.getNombre());
                 coche1.cancel();
                 coche3.cancel();
+                lblGanador.setText("");
+
             }
         });
         coche2.messageProperty().addListener((observableValue, oldState, newState) -> {
@@ -63,6 +69,7 @@ public class AppController {
 
         // Coche3
         coche3 = new CocheTask(tfCoche3Value, distanciaCircuito, "Ferrari");
+        lblNombre3.setText(coche3.getNombre());
         coche3.stateProperty().addListener((observableValue, oldState, newState) -> {
             if (newState == Worker.State.RUNNING){
                 pbCoche3.progressProperty().unbind();
@@ -76,9 +83,17 @@ public class AppController {
         coche3.messageProperty().addListener((observableValue, oldState, newState) -> {
             lblCoche3.setText(newState);
         });
-
+        lblGanador.setText("");
+        lblCoche1.setText("");
+        lblCoche2.setText("");
+        lblCoche3.setText("");
         new Thread(coche1).start();
         new Thread(coche2).start();
         new Thread(coche3).start();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        lblDistancia.setText(String.valueOf(distanciaCircuito));
     }
 }
