@@ -67,8 +67,8 @@
                 <version>0.0.3</version>
                 <configuration>
                     <!--<mainClass>com.svalero.carrera.App</mainClass>-->
-                    <mainClass>com.svalero.cronometro.App</mainClass>
-                    <!--<mainClass>com.svalero.cuentaAtras.App</mainClass>-->
+                    <!--<mainClass>com.svalero.cronometro.App</mainClass>-->
+                    <mainClass>com.svalero.cuentaAtras.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>
