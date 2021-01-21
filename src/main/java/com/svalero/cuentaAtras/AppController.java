@@ -3,6 +3,7 @@ package com.svalero.cuentaAtras;
 import javafx.concurrent.Worker;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
@@ -24,7 +25,10 @@ public class AppController {
                 pbCronometro.progressProperty().unbind();
                 pbCronometro.progressProperty().bind(cuentaAtrasTask.progressProperty());
             } else if (t1 == Worker.State.SUCCEEDED){
-                lblTiempo.setText("FIN");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("MENSAJE INFORMATIVO");
+                alert.setContentText("CUENTA ATRÁS FINALIZADA");
+                alert.show();
             }
         });
         cuentaAtrasTask.messageProperty().addListener((observableValue, s, t1) ->
